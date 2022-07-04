@@ -3,7 +3,29 @@
   margin: 0;
   box-sizing: border-box;
 }
+::-webkit-scrollbar{
+  width: .7em;
+  border-radius: 50px;
+}
+::-webkit-scrollbar-track{
+  background: rgb(39, 39, 39);
+}
+
+::-webkit-scrollbar-thumb{
+  background: rgb(255, 253, 253);
+  border-radius: 50px;
+  border: solid .1em #fff;
+}
 .App{
+
+  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+  
+  /* background: rgb(0,15,96); */
+  /* background: linear-gradient(0deg, rgba(0,15,96,1) 0%, rgba(138,109,36,1) 28%, rgba(162,96,159,1) 67%, rgba(45,154,253,1) 100%); */
+
+  /* background: rgb(34,193,195); */
+  /* background: linear-gradient(0deg, rgba(34,193,195,1) 0%, rgba(253,187,45,1) 100%); */
+
   background: rgb(7,0,255);
   background: linear-gradient(225deg, rgba(7,0,255,1) 0%, rgba(0,255,244,1) 100%);
   text-align: center;
@@ -15,6 +37,9 @@
   font-size: calc(10px + 2vmin);
 }
 
+.App-slider{
+
+}
 /* Header */
 
 .Header-title{
@@ -32,13 +57,15 @@
 }
 
 .Header-input_wrapper{
-  border: 5px solid #fff;
+  /* border: 5px solid #fff; */
   width: fit-content;
   margin: auto;
   margin-top: .1em;
   display: flex;
   justify-content: space-between;
   border-radius: 50px;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.256);
+  background: rgba(128, 128, 128, 0.47);
 }
 .Header input{
   text-align: center;
@@ -51,6 +78,12 @@
   transition: 0.2s;
   color: #fff;
 }
+input:not(:placeholder-shown){
+  font-size: 1em;
+}
+.Header input::placeholder{
+  color: rgba(255, 255, 255, 0.454);
+}
 .Header input:focus{
   font-size: 1em;
 }
@@ -58,6 +91,7 @@
   padding: .1em;
   cursor: pointer;
   font-size: 1em;
+  text-shadow: 0px 0px 10px rgba(255, 255, 255, 0.248);
   background: transparent;
   border: transparent;
 }
@@ -93,4 +127,21 @@
   margin-top: 2em;
   color: white;
   font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+.Today-cell_wrapper{
+  margin-top: 1em;
+  display: flex;
+  justify-content: space-around;
+}
+.Today-cell{
+  border-radius: 20px;
+  padding: 1em;
+  background: rgba(0, 0, 0, 0.386);
+  backdrop-filter: blur(30px);
+}
+.Today-cell_title{
+  margin-bottom: 1em;
+}
+.Today-cell_subtitle{
+  font-size: .6em;
 }

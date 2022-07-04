@@ -1,12 +1,13 @@
 import React,{useState} from 'react';
 import { options } from '../service/Options';
 
-const Header = ({setFetched,setToday}) => {
+const Header = ({setFetched,setToday,parseCelsius}) => {
   const [location, setLocation] = useState('')
 
   const handleChange = ({target}) => {
     setLocation(target.value)
   }
+  
   const handleSubmit = () =>{
     fetch(`https://community-open-weather-map.p.rapidapi.com/climate/month?q=${location}`, options)
     .then(response => response.json())
