@@ -1,25 +1,27 @@
-import logo from './logo.svg';
+import React,{useState,useEffect} from 'react';
+import { Header } from './components/Header';
+import { List } from './components/List';
+import { Today } from './components/Today';
+import { options } from './service/Options';
 import './App.css';
 
-function App() {
+const App = () => {
+  const [fetched, setFetched] = useState();
+  const [today, setToday] = useState()
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <Header
+       setFetched={setFetched}
+       setToday={setToday}  
+       />
+        { today && <Today 
+       today={today}
+       
+       />}
+      { fetched && <List 
+      fetched={fetched}/>}
     </div>
   );
 }
 
-export default App;
+export {App};
