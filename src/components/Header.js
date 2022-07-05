@@ -1,7 +1,7 @@
 import React,{useState} from 'react';
 import { options } from '../service/Options';
 
-const Header = ({setFetched,setToday,parseCelsius}) => {
+const Header = ({setFetched,setToday,setLoading,setErrors}) => {
   const [location, setLocation] = useState('')
 
   const handleChange = ({target}) => {
@@ -10,14 +10,16 @@ const Header = ({setFetched,setToday,parseCelsius}) => {
   
   const handleSubmit = () =>{
     fetch(`https://community-open-weather-map.p.rapidapi.com/climate/month?q=${location}`, options)
+    .then(setLoading(true))
     .then(response => response.json())
     .then(data => setFetched(data))
-    .catch(err => console.error(err));
+    .catch(err => setErrors(err))
+    .finally(setLoading(false))
 
     fetch(`https://community-open-weather-map.p.rapidapi.com/weather?q=${location}`, options)
 	  .then(response => response.json())
 	  .then(data => setToday(data))
-	  .catch(err => console.error(err));
+	  .catch(err => setErrors(err));
     }
 
     return (
